@@ -1,0 +1,26 @@
+{
+  "name": "realtypeof",
+  "version": "1.0.0",
+  "description": "You can get the real type of values (i.e. array, null, object, map, set, etc.)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Babak-Gholamzadeh/realtypeof.git"
+  },
+  "keywords": [
+    "typeof",
+    "kindof",
+    "type",
+    "array",
+    "null"
+  ],
+  "author": "Babak Gholamzadeh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Babak-Gholamzadeh/realtypeof/issues"
+  },
+  "homepage": "https://github.com/Babak-Gholamzadeh/realtypeof#readme"
+}
