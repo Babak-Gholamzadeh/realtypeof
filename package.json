@@ -1,6 +1,6 @@
 {
   "name": "realtypeof",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "You can get the real type of values (i.e. array, null, object, map, set, etc.)",
   "main": "index.js",
   "scripts": {
