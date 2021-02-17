@@ -1,21 +1,16 @@
-const realTypeOf = value =>
+const realTypeOf = new Proxy(value =>
   Object.prototype.toString.call(value)
     .replace(/\[|\]/g, '')
     .split(' ')[1]
-    .toLocaleLowerCase();
-
-realTypeOf.isNumber = value => realTypeOf(value) === 'number';
-realTypeOf.isString = value => realTypeOf(value) === 'string';
-realTypeOf.isBoolean = value => realTypeOf(value) === 'boolean';
-realTypeOf.isNull = value => realTypeOf(value) === 'null';
-realTypeOf.isUndefined = value => realTypeOf(value) === 'undefined';
-realTypeOf.isSymbol = value => realTypeOf(value) === 'symbol';
-realTypeOf.isArray = value => realTypeOf(value) === 'array';
-realTypeOf.isFunction = value => realTypeOf(value) === 'function';
-realTypeOf.isObject = value => realTypeOf(value) === 'object';
-realTypeOf.isMap = value => realTypeOf(value) === 'map';
-realTypeOf.isSet = value => realTypeOf(value) === 'set';
-realTypeOf.isWeakMap = value => realTypeOf(value) === 'weakmap';
-realTypeOf.isWeakSet = value => realTypeOf(value) === 'weakset';
+    .toLocaleLowerCase(),
+    {
+      get(target, prop) {
+        if(prop.toLowerCase().startsWith('is')) {
+          const type = prop.substr(2).toLowerCase();
+          return value => target(value) === type;
+        } else
+          throw Error(`'${prop}' is not a method.\n\tIf you want to check the type of a value, use 'is' followed by the type name (i.e. isNumber) and then call it`);
+      }
+    });
 
 module.exports = realTypeOf;
